@@ -12,9 +12,18 @@
     "stripe": "^8.209.0"
     npm install --legacy-peer-deps 
 
- 2. npm install -g @sanity/cli
- 3. sanity init --coupon javascriptmastery2022   
+ 2.npm install -g @sanity/cli
+ 3.sanity init --coupon javascriptmastery2022   
+ 4.npm install --save-dev @babel/preset-react @babel/core
+ 5.npm install @babel/runtime
+
 
  -------LIBRARIES----------
- 1. sanity docs
+ 1.sanity docs
  2.sanity manage
+
+
+ ------- MODULES-------------
+ 1. Intro & Setup
+ 2. Sanity Setup
+ 3. Home Page
