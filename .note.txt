@@ -27,3 +27,4 @@
  1. Intro & Setup
  2. Sanity Setup
  3. Home Page
+ 4. HookUp Sanity
