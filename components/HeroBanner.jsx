@@ -28,7 +28,7 @@ const HeroBanner = ({ heroBanner }) => {
           <Link href={`/product/${heroBanner?._id}`}>
             <button
               type="button"
-              className="rounded-[15px] mt-[40px] bg-[#f02d34] shadow-md p-[10px_16px]  text-white border-none text-[16px] font-medium cursor-pointer z-[10000]"
+              className="outline-none rounded-[15px] mt-[40px] bg-[#f02d34] shadow-md p-[10px_16px]  text-white border-none text-[16px] font-medium cursor-pointer z-[10000]"
             >
               {heroBanner?.buttonText}
             </button>
