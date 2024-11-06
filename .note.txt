@@ -30,3 +30,4 @@
  4. HookUp Sanity
  5. Products
  6. Layout
+ 7. Product Details

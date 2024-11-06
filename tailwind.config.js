@@ -11,7 +11,27 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        marquee: "marquee 15s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".animation-paused": {
+          "animation-play-state": "paused",
+        },
+        ".animation-running": {
+          "animation-play-state": "running",
+        },
+      });
+    },
+  ],
 };
