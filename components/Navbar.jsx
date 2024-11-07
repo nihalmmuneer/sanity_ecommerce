@@ -3,17 +3,21 @@ import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import Cart from "./Cart";
 import { useStateContext } from "@/context/StateContext";
+import { GiShoppingBag } from "react-icons/gi";
 const Navbar = () => {
   const { totalQuantities, showCart, setShowCart } = useStateContext();
   return (
     <div className="flex m-[13px_18px] justify-between relative">
       <p className="text-gray-500 text-[15px]">
-        <Link href="/" className="font-serif">
+        <Link href="/" className="font-serif font-extrabold flex items-center gap-1">
           SnapMart
+          <span className="text-[#FFA500]">
+            <GiShoppingBag />
+          </span>
         </Link>
       </p>
       <button
-        onClick={()=>setShowCart(true)}
+        onClick={() => setShowCart(true)}
         type="button"
         className="text-[20px] text-gray-500 cursor-pointer relative hover:scale-125 transform transition-transform ease-in duration-500 border-none bg-transparent"
       >
