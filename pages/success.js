@@ -26,7 +26,7 @@ const success = () => {
         <p className="font-semibold text-slate-700 text-base">
           Check your email inbox for the receipt
         </p>
-        <p className="font-semibold  text-black text-xs md:flex flex-col items-center">
+        <p className="font-semibold  text-black text-xs flex flex-col  justify-center items-center">
           If you have any queries, please email
           <a href="mailto:enquiryhelp@gmail.com" className="text-[#f02d34]">
             {" "}

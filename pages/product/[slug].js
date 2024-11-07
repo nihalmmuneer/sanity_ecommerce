@@ -19,24 +19,24 @@ const ProductDetails = ({ product, products }) => {
     setShowCart(true);
   };
   return (
-    <div>
+    <div className=" min-w-[400px] md:w-auto">
       <div className="md:flex gap-14  md:mt-14 text-[#324d67]">
-        <div className="">
-          <div className="bg-[#ebebeb] object-cover rounded-[15px] w-[full] h-[400px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300">
+        <div>
+          <div className="bg-[#ebebeb]">
             <img
               src={urlFor(image && image[index])}
-              className="w-[400px] h-[400px] rounded-[15px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300"
+              className=" w-full md:w-[400px] h-[400px] rounded-[15px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300"
             />
           </div>
-          <div className="flex items-center gap-[10px] w-24 h-24 mt-4 ">
+          <div className="flex items-center gap-2 md:gap-[8px] w-24 h-24 mt-4">
             {image &&
               image?.map((item, i) => (
                 <img
                   key={i}
                   src={urlFor(item)}
                   className={`object-cover cursor-pointer ${
-                  i === index ? "bg-[#f02d34]" : ""
-                } bg-[#ebebeb] rounded-[15px] w-24 h-24 transform transition-transform duration-500 ease-in-out`}
+                    i === index ? "bg-[#f02d34]" : ""
+                  } bg-[#ebebeb] rounded-[15px] w-24 h-24 transform transition-transform duration-500 ease-in-out`}
                   alt="product-img"
                   onMouseEnter={() => setIndex(i)}
                 />
@@ -100,7 +100,7 @@ const ProductDetails = ({ product, products }) => {
         <h2 className="text-2xl text-[#324d67] text-center font-serif font-bold">
           You may also like
         </h2>
-        <div className="relative h-[400px] w-full overflow-x-hidden">
+        <div className="relative  h-[400px] w-full overflow-x-hidden">
           <div className="flex gap-10 justify-center  mt-6 md:mt-20 absolute whitespace-nowrap hover:animation-paused animate-marquee">
             {products?.map((product) => (
               <Product key={product._id} product={product} />
