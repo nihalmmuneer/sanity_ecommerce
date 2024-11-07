@@ -14,8 +14,6 @@ const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
   const { name, price, details, image } = product;
   const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
-  console.log(product, "productDetails product");
-  console.log(products, "productDetails products");
   const handleBuyNow = () => {
     onAdd(product, qty);
     setShowCart(true);
@@ -27,21 +25,22 @@ const ProductDetails = ({ product, products }) => {
           <div className="bg-[#ebebeb] rounded-[15px] w-[400px] h-[400px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300">
             <img
               src={urlFor(image && image[index])}
-              className="w-[400px] h-[400px]"
+              className="w-[400px] h-[400px] rounded-[15px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300"
             />
           </div>
           <div className="flex items-center gap-2 w-24 h-24 mt-4 ">
-            {image?.map((item, i) => (
-              <img
-                key={i}
-                src={urlFor(item)}
-                className={`object-cover cursor-pointer AED{
+            {image &&
+              image?.map((item, i) => (
+                <img
+                  key={i}
+                  src={urlFor(item)}
+                  className={`object-cover cursor-pointer ${
                   i === index ? "bg-[#f02d34]" : ""
                 } bg-[#ebebeb] rounded-[15px] w-24 h-24 transform transition-transform duration-500 ease-in-out`}
-                alt="product-img"
-                onMouseEnter={() => setIndex(i)}
-              />
-            ))}
+                  alt="product-img"
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))}
           </div>
         </div>
         <div className="mt-5 md:mt-0">
@@ -97,12 +96,12 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-      <div className="mt-[120px]">
+      <div className="mt-[80px]">
         <h2 className="text-2xl text-[#324d67] text-center font-serif font-bold">
           You may also like
         </h2>
         <div className="relative h-[400px] w-full overflow-x-hidden">
-          <div className="flex gap-10 justify-center mt-5 absolute whitespace-nowrap hover:animation-paused animate-marquee">
+          <div className="flex gap-10 justify-center  mt-6 md:mt-20 absolute whitespace-nowrap hover:animation-paused animate-marquee">
             {products?.map((product) => (
               <Product key={product._id} product={product} />
             ))}
@@ -117,7 +116,6 @@ export const getStaticPaths = async () => {
   // Query to get all products and their slugs
   const query = `*[_type == "product"] { slug }`;
   const products = await client.fetch(query);
-  console.log(products, "getStaticProps products");
 
   // Map over the products and create paths with the slug
   const paths = products.map((product) => ({

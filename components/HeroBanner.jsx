@@ -4,7 +4,6 @@ import Image from "next/image";
 import { urlFor } from "@/lib/client";
 
 const HeroBanner = ({ heroBanner }) => {
-  console.log(heroBanner, "heroBanner");
   return (
     <div className="p-[100px_40px] bg-[#dcdcdc] rounded-[15px] relative h-[500px] leading-[0.9] w-full">
       <div className=" text-[20px]">
@@ -20,15 +19,14 @@ const HeroBanner = ({ heroBanner }) => {
         <img
           src={urlFor(heroBanner?.image)}
           alt="headphones"
-          //   width={450}
-          //   height={450}
+      
           className="absolute  top-0 md:right-56 left-20 md:left-auto"
         />
         <div className="">
-          <Link href={`/product/${heroBanner?._id}`}>
+          <Link href={`/product/${heroBanner?.product}`}>
             <button
               type="button"
-              className="outline-none rounded-[15px] mt-[40px] bg-[#f02d34] shadow-md p-[10px_16px]  text-white border-none text-[16px] font-medium cursor-pointer z-[10000]"
+              className="outline-none  rounded-[15px] mt-[40px] bg-[#f02d34] shadow-md p-[10px_16px]  text-white border-none text-[16px] font-medium cursor-pointer z-[10000]"
             >
               {heroBanner?.buttonText}
             </button>
@@ -37,9 +35,6 @@ const HeroBanner = ({ heroBanner }) => {
             <h4 className="mb-[12px]  font-semibold whitespace-nowrap text-xs justify-end flex font-serif">
               {heroBanner?.desc}
             </h4>
-            {/* <p className="text-[#5f5f5f] text-xs flex justify-end font-[100]">
-              {heroBanner?.desc}
-            </p> */}
           </div>
         </div>
       </div>

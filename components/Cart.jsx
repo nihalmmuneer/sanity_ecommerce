@@ -146,7 +146,7 @@ const Cart = () => {
                 AED {totalPrice.toFixed(2)}
               </h3>
             </div>
-            <div className="bg-red-500  p-2 m-4 rounded-lg font-bold flex justify-center shadow-md">
+            <div className="bg-red-600  p-2 m-4 rounded-lg font-bold flex justify-center shadow-md">
               <button
                 type="button"
                 className="flex justify-center  items-center gap-1 text-white uppercase text-sm"

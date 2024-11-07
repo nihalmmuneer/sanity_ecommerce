@@ -4,8 +4,6 @@ import React from "react";
 
 const Home = ({ products, bannerData }) => (
   <>
-    {console.log(products, "products")}
-    {console.log(bannerData, "bannerData")}
     <HeroBanner heroBanner={bannerData[0]} />
     <div className="text-center text-[#324d67] mt-10">
       <h2 className="text-[40px] font-extrabold">Best Selling Products</h2>

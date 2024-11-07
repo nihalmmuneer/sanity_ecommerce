@@ -3,7 +3,6 @@ const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 export default async function handler(req, res) {
   if (req.method === "POST") {
     req.body.map((item) => {
-      console.log(item.image[0], "item");
     });
     try {
       // Create Checkout Sessions from body params.
