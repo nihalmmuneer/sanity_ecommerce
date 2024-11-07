@@ -31,3 +31,4 @@
  5. Products
  6. Layout
  7. Product Details
+ 8. Context Logic

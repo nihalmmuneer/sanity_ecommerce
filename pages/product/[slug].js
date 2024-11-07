@@ -8,10 +8,12 @@ import {
   AiOutlineStar,
 } from "react-icons/ai";
 import { Product } from "@/components";
+import { useStateContext } from "@/context/StateContext";
 
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
   const { name, price, details, image } = product;
+  const { incQty, decQty, qty,onAdd } = useStateContext();
   console.log(product, "productDetails product");
   console.log(products, "productDetails products");
   return (
@@ -19,7 +21,10 @@ const ProductDetails = ({ product, products }) => {
       <div className="md:flex gap-28 m-10 mt-14 text-[#324d67]">
         <div className="">
           <div className="bg-[#ebebeb] rounded-[15px] w-[400px] h-[400px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300">
-            <img src={urlFor(image && image[index])} className="w-[400px] h-[400px]"/>
+            <img
+              src={urlFor(image && image[index])}
+              className="w-[400px] h-[400px]"
+            />
           </div>
           <div className="flex items-center gap-2 w-24 h-24 mt-4 ">
             {image?.map((item, i) => (
@@ -52,14 +57,14 @@ const ProductDetails = ({ product, products }) => {
           <p className="text-[#dd454a] font-bold text-lg mt-3 ">${price}</p>
           <div className="flex items-center gap-2 mt-3">
             <h3 className="font-bold text-sm">Quantity:</h3>
-            <p className="border  border-gray-400 flex items-center  cursor-pointer">
-              <span className="border-gray-400 text-[16px] text-red-600 px-2">
-                <AiOutlineMinus />
+            <p className="border  border-gray-400 shadow-sm flex items-center  cursor-pointer">
+              <span className="border-gray-400 text-[16px] hover:scale-125 transition-transform  text-red-600 px-2" onClick={decQty}>
+                <AiOutlineMinus   />
               </span>
-              <span className="border-r-[1px] border-l-[1px] border-gray-400 text-[16px] px-2">
-                0
+              <span className=" outer-none border-r-[1px] border-l-[1px] border-gray-400 text-[16px] px-2">
+                {qty}
               </span>
-              <span className="text-green-700 text-[16px] px-2">
+              <span className="text-green-700 text-[16px] px-2 hover:scale-125 transition-transform" onClick={incQty}>
                 <AiOutlinePlus />
               </span>
             </p>
@@ -67,6 +72,7 @@ const ProductDetails = ({ product, products }) => {
           <div className="gap-5 mt-9 flex items-center ">
             <button
               type="button"
+              onClick={()=>onAdd(product,qty)}
               className="hover:transform hover:scale-110 border rounded-lg px-5 py-2.5 border-[#f02d34] text-[16px] font-medium bg-white cursor-pointer  w-[200px] transform transition-transform duration-500 ease-in-out text-[#f02d34]"
             >
               Add to Cart
