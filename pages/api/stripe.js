@@ -17,7 +17,7 @@ export default async function handler(req, res) {
             shipping_rate: "shr_1QISaVHboMQmWlZ1Ml5SYgSJ",
           },
           {
-            shipping_rate: "shr_1QIScoHboMQmWlZ1hEtsfIpz",
+            shipping_rate: "shr_1QIVttHboMQmWlZ1ZqGfEXn7",
           },
         ],
         line_items: req.body.map((item) => {
@@ -44,8 +44,8 @@ export default async function handler(req, res) {
             quantity: item.quantity,
           };
         }),
-        success_url: `${req.headers.origin}/?success=true`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        success_url: `${req.headers.origin}/success`,
+        cancel_url: `${req.headers.origin}/canceled`,
       };
       const session = await stripe.checkout.sessions.create(params);
       //   res.redirect(303, session.url);

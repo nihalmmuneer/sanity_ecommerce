@@ -70,9 +70,10 @@ const Cart = () => {
             <h3 className="text-sm font-semibold text-gray-600 font-serif">
               Your shopping bag is empty
             </h3>
-            <Link href={'/'} className="w-full flex justify-center">
+            <Link href={"/"} className="w-full flex justify-center">
               <button
                 type="button"
+                onClick={() => setShowCart(false)}
                 className="w-full gap-1 flex  justify-center shadow-md items-center bg-[#f02d34] p-[10px_12px] rounded-[15px] mt-7 text-white cursor-pointer  text-sm border-none max-w-[400px] font-bold transform scale-100 transition-transform duration-500 ease-in-out hover:scale-105"
               >
                 Continue Shopping
@@ -97,8 +98,8 @@ const Cart = () => {
                     <h3 className="text-[18px] text-[#324d67] font-bold">
                       {item?.name}
                     </h3>
-                    <h3 className="text-[16px] text-black font-bold">
-                      ${item?.price}
+                    <h3 className="text-[14px] text-black font-bold">
+                      AED {item?.price}
                     </h3>
                   </div>
                   <div className="mt-[40px] flex justify-between">
@@ -142,7 +143,7 @@ const Cart = () => {
             <div className="flex justify-between items-center">
               <h3 className="text-[17px] font-semibold">Subtotal:</h3>
               <h3 className="text-[17px] font-bold">
-                ${totalPrice.toFixed(2)}
+                AED {totalPrice.toFixed(2)}
               </h3>
             </div>
             <div className="bg-red-500  p-2 m-4 rounded-lg font-bold flex justify-center shadow-md">

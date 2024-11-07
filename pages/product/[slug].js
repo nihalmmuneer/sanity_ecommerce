@@ -13,9 +13,13 @@ import { useStateContext } from "@/context/StateContext";
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
   const { name, price, details, image } = product;
-  const { incQty, decQty, qty,onAdd } = useStateContext();
+  const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
   console.log(product, "productDetails product");
   console.log(products, "productDetails products");
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+    setShowCart(true);
+  };
   return (
     <div>
       <div className="md:flex gap-28 m-10 mt-14 text-[#324d67]">
@@ -31,7 +35,7 @@ const ProductDetails = ({ product, products }) => {
               <img
                 key={i}
                 src={urlFor(item)}
-                className={`object-cover cursor-pointer ${
+                className={`object-cover cursor-pointer AED{
                   i === index ? "bg-[#f02d34]" : ""
                 } bg-[#ebebeb] rounded-[15px] w-24 h-24 transform transition-transform duration-500 ease-in-out`}
                 alt="product-img"
@@ -54,17 +58,23 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <h4 className="text-sm font-bold mt-3">Details:</h4>
           <p className="text-sm mt-2 text-gray-500">{details}</p>
-          <p className="text-[#dd454a] font-bold text-lg mt-3 ">${price}</p>
+          <p className="text-[#dd454a] font-bold text-lg mt-3 ">AED {price}</p>
           <div className="flex items-center gap-2 mt-3">
             <h3 className="font-bold text-sm">Quantity:</h3>
             <p className="border  border-gray-400 shadow-sm flex items-center  cursor-pointer">
-              <span className="border-gray-400 text-[16px] hover:scale-125 transition-transform  text-red-600 px-2" onClick={decQty}>
-                <AiOutlineMinus   />
+              <span
+                className="border-gray-400 text-[16px] hover:scale-125 transition-transform  text-red-600 px-2"
+                onClick={decQty}
+              >
+                <AiOutlineMinus />
               </span>
               <span className=" outer-none border-r-[1px] border-l-[1px] border-gray-400 text-[16px] px-2">
                 {qty}
               </span>
-              <span className="text-green-700 text-[16px] px-2 hover:scale-125 transition-transform" onClick={incQty}>
+              <span
+                className="text-green-700 text-[16px] px-2 hover:scale-125 transition-transform"
+                onClick={incQty}
+              >
                 <AiOutlinePlus />
               </span>
             </p>
@@ -72,13 +82,14 @@ const ProductDetails = ({ product, products }) => {
           <div className="gap-5 mt-9 flex items-center ">
             <button
               type="button"
-              onClick={()=>onAdd(product,qty)}
+              onClick={() => onAdd(product, qty)}
               className="hover:transform hover:scale-110 border rounded-lg px-5 py-2.5 border-[#f02d34] text-[16px] font-medium bg-white cursor-pointer  w-[200px] transform transition-transform duration-500 ease-in-out text-[#f02d34]"
             >
               Add to Cart
             </button>
             <button
               type="button"
+              onClick={handleBuyNow}
               className="hover:transform rounded-lg hover:scale-110 border px-5 py-2.5 bg-[#f02d34] text-[16px] font-medium text-white cursor-pointer  w-[200px] transform transition-transform duration-500 ease-in-out "
             >
               Buy Now
