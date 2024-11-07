@@ -35,3 +35,4 @@
  9. Cart Logic
  10.Stripe
  11.Success Page
+ 12.Deployment
