@@ -12,6 +12,8 @@ import {
 import Link from "next/link";
 import { TiDeleteOutline } from "react-icons/ti";
 import { FaCreditCard } from "react-icons/fa";
+import getStripe from "@/lib/getStripe";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -23,6 +25,28 @@ const Cart = () => {
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext();
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (!response.ok) {
+      console.error("Error creating Stripe checkout session");
+      return;
+    }
+
+    const data = await response.json();
+
+    toast.loading("Redirecting...");
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
   return (
     <div
       ref={cartRef}
@@ -46,7 +70,7 @@ const Cart = () => {
             <h3 className="text-sm font-semibold text-gray-600 font-serif">
               Your shopping bag is empty
             </h3>
-            <Link href={"/"} className="w-full flex justify-center">
+            <Link href={'/'} className="w-full flex justify-center">
               <button
                 type="button"
                 className="w-full gap-1 flex  justify-center shadow-md items-center bg-[#f02d34] p-[10px_12px] rounded-[15px] mt-7 text-white cursor-pointer  text-sm border-none max-w-[400px] font-bold transform scale-100 transition-transform duration-500 ease-in-out hover:scale-105"
@@ -62,7 +86,7 @@ const Cart = () => {
         <div className="mt-[15px] overflow-auto max-h-[70vh] p-[20px_10px] ">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div key={item._id} className="flex p-5 gap-5 w-full">
+              <div key={item?._id} className="flex p-5 gap-5 w-full">
                 <img
                   src={urlFor(item?.image[0])}
                   alt="product-img"
@@ -71,10 +95,10 @@ const Cart = () => {
                 <div className="w-full">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-[18px] text-[#324d67] font-bold">
-                      {item.name}
+                      {item?.name}
                     </h3>
                     <h3 className="text-[16px] text-black font-bold">
-                      ${item.price}
+                      ${item?.price}
                     </h3>
                   </div>
                   <div className="mt-[40px] flex justify-between">
@@ -89,7 +113,7 @@ const Cart = () => {
                           <AiOutlineMinus />
                         </span>
                         <span className=" outer-none border-r-[1px] border-l-[1px] border-gray-400 text-[16px] px-2">
-                          {item.quantity}
+                          {item?.quantity}
                         </span>
                         <span
                           className="text-green-700 text-[16px] px-2 hover:scale-125 transition-transform"
@@ -104,7 +128,7 @@ const Cart = () => {
                     <button
                       type="button"
                       className="text-[#f02d34] cursor-pointer bg-transparent text-xl border-none"
-                      onClick={() => onRemove(item._id)}
+                      onClick={() => onRemove(item?._id)}
                     >
                       <TiDeleteOutline />
                     </button>
@@ -125,6 +149,7 @@ const Cart = () => {
               <button
                 type="button"
                 className="flex justify-center  items-center gap-1 text-white uppercase text-sm"
+                onClick={handleCheckout}
               >
                 Pay With Stripe
                 <span>
