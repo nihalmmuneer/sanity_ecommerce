@@ -20,7 +20,7 @@ const HeroBanner = ({ heroBanner }) => {
           src={urlFor(heroBanner?.image)}
           alt="headphones"
       
-          className="absolute  top-0 md:right-56 left-20 md:left-auto"
+          className="absolute  top-0  right-0  md:right-70"
         />
         <div className="">
           <Link href={`/product/${heroBanner?.product}`}>

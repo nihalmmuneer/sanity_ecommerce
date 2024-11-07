@@ -20,15 +20,15 @@ const ProductDetails = ({ product, products }) => {
   };
   return (
     <div>
-      <div className="md:flex gap-28 m-10 mt-14 text-[#324d67]">
+      <div className="md:flex gap-14  md:mt-14 text-[#324d67]">
         <div className="">
-          <div className="bg-[#ebebeb] rounded-[15px] w-[400px] h-[400px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300">
+          <div className="bg-[#ebebeb] object-cover rounded-[15px] w-[full] h-[400px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300">
             <img
               src={urlFor(image && image[index])}
               className="w-[400px] h-[400px] rounded-[15px] hover:bg-[#f02d34] cursor-pointer transition-transform ease-in-out duration-300"
             />
           </div>
-          <div className="flex items-center gap-2 w-24 h-24 mt-4 ">
+          <div className="flex items-center gap-[10px] w-24 h-24 mt-4 ">
             {image &&
               image?.map((item, i) => (
                 <img

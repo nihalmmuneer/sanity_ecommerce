@@ -16,17 +16,17 @@ const success = () => {
   }, []);
   return (
     <div className=" min-h-[70vh] flex justify-center items-center">
-      <div className="flex w-[1000px]  gap-2 items-center justify-center flex-col rounded-2xl bg-[#dcdcdc] p-[50px]">
+      <div className="flex w-[1000px] gap-2 items-center justify-center flex-col rounded-2xl  bg-[#dcdcdc] p-[50px]">
         <p className="text-6xl text-green-800">
           <BsBagCheckFill />
         </p>
-        <h2 className="capitalize text-[#324d67]  text-2xl md:text-4xl font-extrabold mt-5">
+        <h2 className="whitespace-nowrap capitalize text-[#324d67]  text-2xl md:text-4xl font-extrabold mt-5">
           Thank you for your order!
         </h2>
         <p className="font-semibold text-slate-700 text-base">
           Check your email inbox for the receipt
         </p>
-        <p className="font-semibold text-black text-xs">
+        <p className="font-semibold  text-black text-xs md:flex flex-col items-center">
           If you have any queries, please email
           <a href="mailto:enquiryhelp@gmail.com" className="text-[#f02d34]">
             {" "}

@@ -5,14 +5,14 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>SnapMart</title>
       </Head>
       <header>
         <Navbar />
       </header>
-      <main className="p-2">{children}</main>
+      <main className="w-[100%] p-2">{children}</main>
       <footer>
         <Footer />
       </footer>

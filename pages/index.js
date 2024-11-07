@@ -1,9 +1,9 @@
-import {  FooterBanner, HeroBanner, Product } from "@/components";
+import { FooterBanner, HeroBanner, Product } from "@/components";
 import { client } from "@/lib/client";
 import React from "react";
 
 const Home = ({ products, bannerData }) => (
-  <>
+  <div>
     <HeroBanner heroBanner={bannerData[0]} />
     <div className="text-center text-[#324d67] mt-10">
       <h2 className="text-[40px] font-extrabold">Best Selling Products</h2>
@@ -16,7 +16,7 @@ const Home = ({ products, bannerData }) => (
         ))}
     </div>
     <FooterBanner footerBanner={bannerData[0]} />
-  </>
+  </div>
 );
 
 export const getServerSideProps = async () => {

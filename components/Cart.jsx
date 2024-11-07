@@ -50,22 +50,22 @@ const Cart = () => {
   return (
     <div
       ref={cartRef}
-      className="bg-black/50 right-0 fixed top-0 z-[100] w-[100vw] transition-transform transform duration-100"
+      className="bg-black/50 h-full w-full right-0 fixed top-0 z-[100] md:w-[100vw] transition-transform transform duration-100"
     >
-      <div className="h-[100vh] md:w-[600px]  md:float-right relative bg-white">
+      <div className="h-[100vh] xs:w-[300px] sm:w-[300px] md:w-[400px] lg:w-[600px]  float-right relative bg-white">
         <button
           className="flex  p-[20px_10px] items-center text-lg font-medium cursor-pointer gap-2 ml-2 border-none bg-transparent"
           type="button"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
-          <span className="ml-1 text-base">Your Cart</span>
-          <span className="text-[#f02d34] text-base ml-2">
+          <span className="ml-1 text-base sm:text-sm xs:text-xs">Your Cart</span>
+          <span className="text-[#f02d34] text-base ml-2 sm:ml-0 sm:text-sm">
             {totalQuantities} (items)
           </span>
         </button>
         {cartItems.length < 1 && (
-          <div className="w-full  flex flex-col justify-center items-center">
+          <div className="w-full flex flex-col justify-center items-center">
             <AiOutlineShopping size={150} className="text-gray-800" />
             <h3 className="text-sm font-semibold text-gray-600 font-serif">
               Your shopping bag is empty
@@ -74,7 +74,7 @@ const Cart = () => {
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
-                className="w-full gap-1 flex  justify-center shadow-md items-center bg-[#f02d34] p-[10px_12px] rounded-[15px] mt-7 text-white cursor-pointer  text-sm border-none max-w-[400px] font-bold transform scale-100 transition-transform duration-500 ease-in-out hover:scale-105"
+                className="w-full sm:w-auto md:w-auto gap-1 flex  justify-center shadow-md items-center bg-[#f02d34] p-[10px_12px] rounded-[15px] mt-7 text-white cursor-pointer  text-sm border-none max-w-[400px] font-bold transform scale-100 transition-transform duration-500 ease-in-out hover:scale-105"
               >
                 Continue Shopping
                 <span>
@@ -84,21 +84,21 @@ const Cart = () => {
             </Link>
           </div>
         )}
-        <div className="mt-[15px] overflow-auto max-h-[70vh] p-[20px_10px] ">
+        <div className="mt-[15px] overflow-auto max-h-[70vh] p-[20px_10px]">
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div key={item?._id} className="flex p-5 gap-5 w-full">
+              <div key={item?._id} className="flex p-5 sm:p-2 gap-5 w-full">
                 <img
                   src={urlFor(item?.image[0])}
                   alt="product-img"
                   className="w-[110px] h-[110px] rounded-[15px] bg-[#ebebeb]"
                 />
                 <div className="w-full">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-[18px] text-[#324d67] font-bold">
+                  <div className="flex flex-wrap items-center justify-between gap-10">
+                    <h3 className="text-[18px] text-[#324d67] font-bold sm:text-base">
                       {item?.name}
                     </h3>
-                    <h3 className="text-[14px] text-black font-bold">
+                    <h3 className="text-[14px] text-black font-bold sm:text-sm">
                       AED {item?.price}
                     </h3>
                   </div>

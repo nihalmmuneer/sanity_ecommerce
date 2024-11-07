@@ -7,9 +7,12 @@ import { GiShoppingBag } from "react-icons/gi";
 const Navbar = () => {
   const { totalQuantities, showCart, setShowCart } = useStateContext();
   return (
-    <div className="flex m-[13px_18px] justify-between relative">
+    <div className="flex m-[13px_18px] md:m-[13px_18px] justify-between relative">
       <p className="text-gray-500 text-[15px]">
-        <Link href="/" className="font-serif font-extrabold flex items-center gap-1">
+        <Link
+          href="/"
+          className="font-serif font-extrabold flex items-center gap-1"
+        >
           SnapMart
           <span className="text-[#FFA500]">
             <GiShoppingBag />
